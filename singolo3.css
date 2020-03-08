@@ -99,6 +99,7 @@
   border-radius: 6px;
   font-size: 20px;
   cursor: pointer;
+  transition: all .3s;
 }
 .submit:hover {
   background-color: #d6564f;
