@@ -4,25 +4,38 @@
 	font-family: 'Lato', sans-serif;
 	margin: 0;
 	padding: 0;
+	scroll-behavior: smooth;
 }
 
 .container {
 	width: 1020px;
 	margin: 0 auto;
+	overflow: hidden;
 }
 
 /* Singolo 1 */
+body {
+	margin-top: 94.5px;
+}
+body > section {
+	scroll-margin-top: 94px;
+}
 
 .header {
-	padding-top: 39px;
+	padding-top: 34px;
 	height: 94.5px;
 	background-color: #2d303a;
 	border-bottom: solid 6px #323746;
+	z-index: 99;
+	top: 0;
+	width: 100%;
+	position: fixed;
 }
+
 
 .header__logo {
 	font-size: 24.5px;
-	line-height: 9px;
+	line-height: 20px;
 	font-weight: 500;
 	text-transform: uppercase;
 	color: #ffffff;
@@ -34,7 +47,7 @@
 
 .header__navigation {
 	position: relative;
-	bottom: 2px;
+	bottom: -3px;
 }
 
 .header__wrapper {
@@ -47,7 +60,7 @@
 	margin: 0 40px;
 }
 
-#active {
+.navigation li .active {
 	color: #f06c64;
 }
 
@@ -90,6 +103,7 @@
 	text-transform: uppercase;
 	text-decoration: none;
 	text-align: justify;
+	text-transform: uppercase;
 }
 
 .navigation li a:hover {
@@ -98,24 +112,39 @@
 	transition: 0.6s;
 }
 
+/* #home {
+	margin-top: 94.5px;
+} */
+
 .slider {
 	height: 599.9px;
 	background-color: #f06c64;
 	border-bottom: solid 6px #ea676b;
+	position: relative;
+	
 }
 
+/* .slider__container {
+	position: relative;
+} */
 .slider__wrapper {
-	display: -webkit-box;
-	display: -ms-flexbox;
+	/* position: relative; */
 	display: flex;
-	-webkit-box-pack: justify;
-	-ms-flex-pack: justify;
-	justify-content: space-between;
-	padding: 53px 40px 0 42px;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
 }
+
+.right-arrow {
+	position: absolute;
+	z-index: 10;
+	top: 282px;
+    right: 161px;
+}
+.left-arrow {
+	position: absolute;
+	z-index: 10;
+	top: 282px;
+    left: 164px;
+}
+
 
 .slider__item {
 	position: relative;
@@ -129,8 +158,57 @@
 	padding-right: 2px;
 }
 
-.arrow:hover {
+.arrow-right:hover {
 	cursor: pointer;
+	filter: brightness(0);
+}
+.arrow-left:hover {
+	cursor: pointer;
+	filter: brightness(0);
+}
+
+.second-slide{
+	position: absolute;
+	top: 0;
+	transition: opacity 1s ease-in;
+	z-index: 2;
+}
+
+.hidden {
+	opacity: 0;
+}
+
+.black-screen {
+	background: black;
+    position: absolute;
+    width: 188px;
+    height: 336px;
+    z-index: 1;
+    top: 211px;
+    left: 248px;
+	transition: opacity 1s ease-in;
+}
+.black-screen_horisontal {
+	width: 333px;
+	height: 188px;
+	left: 607px;
+    top: 286px;
+}
+.phone-button {
+	position: absolute;
+	width: 43px;
+	height: 43px;
+	z-index: 3;
+	cursor:  pointer;
+    
+}
+.phone-button_vertical {
+	left: 319px;
+    top: 553px;
+}
+.phone-button_horisontal {
+	left: 553px;
+    top: 355px;
 }
 
 .our-servises {
@@ -288,11 +366,13 @@
 	color: #dedede;
 	cursor: pointer;
 }
+.tag_all {
+	width: 30px;
+	padding: 7px 7px;
+}
 .tag_selected {
 	border: 1px solid #c5c5c5;
 	color: #dedede;
-	width: 30px;
-	padding: 7px 7px;
 }
 
 .layout-4-colomns {
@@ -301,11 +381,23 @@
 	flex-wrap: wrap;
 	margin-top: 19px;
 	overflow: hidden;
-	max-height: 605px;
+	max-height: 610px;
+}
+/* Создаем лишний блок, чтобы красиво отображалось при изменение тега. */
+.layout-4-colomns:after{
+	content: '';
+	width: 23%;
+	display: block;
 }
 
 .block {
 	margin-bottom: 17px;
+}
+.block_hidden {
+	display: none;
+}
+.block_bordered {
+	border: solid 5px #F06C64;
 }
 
 .about-us {
@@ -378,6 +470,7 @@
 	background-color: #f06c64;
 	height: 654.3px;
 	border-bottom: 6px solid #ea676b;
+	position: relative;
 }
 .quote__description {
 	margin-top: 18px;
@@ -538,6 +631,56 @@
 	margin-left: -3px;
 	margin-top: 0;
 }
+
+
+#message-block{
+	width: 100vw;
+    height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #0008
+} 
+
+
+
+
+.message {
+	padding-top: 40px;
+	border-radius: 50px 20px;
+	text-align: center;
+	margin-top: 50vh;
+	background: white;
+	width: 400px;
+	height: 200px;
+	margin: 150px auto;
+	
+}
+.message >* {
+	margin-bottom: 10px;
+}
+
+.invisible {
+	display: none;
+}
+
+.close-button {
+	background-color:#d6564f; 
+    color: #f0d8d9;
+    border: none;
+    border-radius: 6px;
+	font-size: 20px;
+	height: 36px;
+	width: 50%;
+	cursor: pointer;
+}
+.close-button:hover {
+	background-color:#f0d8d9;
+	color: #d6564f;
+	border:2px solid #d6564f;
+}
+
+
 
 .footer {
 	padding-top: 22px;
