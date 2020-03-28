@@ -89,6 +89,17 @@ const slider = () => {
         sliderBox.style.transition = 'transform 0.6s ease-in-out';
         countSlide++;
         sliderBox.style.transform = 'translateX('+(-imageSize*countSlide) + 'px)';
+        //*убираем стили черного экрана
+        if (countSlide === 2){
+            document.getElementById('black-screen_vertical').style.display = 'none'
+            document.getElementById('black-screen_horisontal').style.display = 'none'
+        } else {
+            document.getElementById('black-screen_vertical').style.display = 'block'
+            document.getElementById('black-screen_horisontal').style.display = 'block'
+        }
+        document.getElementById('black-screen_vertical').classList.add('hidden');
+        document.getElementById('black-screen_horisontal').classList.add('hidden');
+        
     })
 
     arrowLeft.addEventListener('click', ()=> {
@@ -96,6 +107,16 @@ const slider = () => {
         sliderBox.style.transition = 'transform 0.6s ease-in-out';
         countSlide--;
         sliderBox.style.transform = 'translateX('+(-imageSize*countSlide) + 'px)';
+        //*убираем стили черного экрана
+        if (countSlide === 0){
+            document.getElementById('black-screen_vertical').style.display = 'none'
+            document.getElementById('black-screen_horisontal').style.display = 'none'
+        } else {
+            document.getElementById('black-screen_vertical').style.display = 'block'
+            document.getElementById('black-screen_horisontal').style.display = 'block'
+        }
+        document.getElementById('black-screen_vertical').classList.add('hidden');
+        document.getElementById('black-screen_horisontal').classList.add('hidden');
     })
 
     sliderBox.addEventListener('transitionend', ()=> {

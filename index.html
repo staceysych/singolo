@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Singolo</title>
 </head>
 <body>
 	<header class="header" >
 		<div class="header_fixed">
-			<div class="container">
+			<div class="container header__container">
+				<span class="hamburger">
+					<span class="hamburger__line"></span>
+				</span>
 				<div class="header__wrapper">
 					<h1 class="header__logo">SINGOLO<span>*</span></h1>
 					<nav class="header__navigation">
@@ -31,24 +34,23 @@
 	<section id="home">
 
 
-
-		<div class="slider__phones">
-			<div class="black-screen hidden" id="black-screen_vertical"></div>
-			<div class="black-screen black-screen_horisontal hidden" id="black-screen_horisontal"></div>
-
-			<div class="phone-button phone-button_vertical" id="phone-button_vertical"></div>
-			<div class="phone-button phone-button_horisontal" id="phone-button_horisontal"></div>
-		</div>
-
-
-
 		<div class="slider" >
 			<div class="container slider__container">
+				
+				<div class="slider__phones">
+					<div class="black-screen hidden" id="black-screen_vertical"></div>
+					<div class="black-screen black-screen_horisontal hidden" id="black-screen_horisontal"></div>
+
+					<div class="phone-button phone-button_vertical" id="phone-button_vertical"></div>
+					<div class="phone-button phone-button_horisontal" id="phone-button_horisontal"></div>
+				</div>
+
+
 				<div class="slider__wrapper">
-					<img src="assets/DOM/Slider.png" alt="sleder2" id="first-slide">
+					<img src="assets/DOM/Slider.png" alt="sleder2" id="first-slide" class="blue-img">
 					<img src="assets/singolo 1/slider1.png" alt="slider1">
 					<img src="assets/DOM/Slider.png" alt="sleder2">
-					<img src="assets/singolo 1/slider1.png" alt="slider1" id="last-slide">
+					<img src="assets/singolo 1/slider1.png" alt="slider1" id="last-slide" class="blue-img">
 					
 	
 					
@@ -79,11 +81,10 @@
 
 
     <section class="our-servises" id="servises">
-        <div class="container">
+        <div class="container container_servises">
             <h2 class="our-servises__title">Our Services</h2>
             <span class="our-servises__description">
-                Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor</span>
-                <span class="our-servises__second"> ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</span> 
+                Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor</span><span class="our-servises__second"> ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</span> 
 
             <div class="layout-3-columns our-servises__layout-3-columns">
                 <div class="our-servises__item">
@@ -153,7 +154,7 @@
 <!--  Singolo 2  -->
 
     <section class="portfolio" id="portfolio">
-		<div class="container about-us__container">
+		<div class="container about-us__container portfolio__container">
 			<h2 class="title">Portfolio</h2>
 			<p class="description">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
 			<div class="portfolio__tags">
@@ -228,7 +229,7 @@
 			<p class="quote__description">
 				Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus, nisi erat porttitor <br> <span>ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</span> 
 			</p>
-			<div class="layout-2-columns">
+			<div class="layout-2-columns quote__layout">
 				<form action="" class="form quote__form">
 					<input id="name" required type="text" placeholder="Name (Required)" minlength="4" maxlength="20">
 					<input id="email" required type="email" placeholder="Email (Required)">
