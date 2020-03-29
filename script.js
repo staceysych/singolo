@@ -26,6 +26,28 @@ window.onload = function() {
     //form 
     submitButton();
     closeButton();
+
+    //navigation block on mobile screen
+    addNavigationSideBar();
+}
+
+
+const addNavigationSideBar = () => {
+    const navigation = document.querySelector('.navigation');
+    const links = document.querySelectorAll('.navigation__link');
+    const hamburger = document.querySelector('.hamburger');
+
+    hamburger.addEventListener('click', ()=>{
+        hamburger.classList.toggle('hamburger__active');
+        navigation.classList.toggle('navigation__active');
+    })
+
+    links.forEach(item =>{
+        item.addEventListener('click', ()=>{
+            hamburger.classList.toggle('hamburger__active');
+            navigation.classList.toggle('navigation__active');
+        })
+    })
 }
 
 //* ...................... Рандомные картинки
@@ -80,15 +102,70 @@ const slider = () => {
     let countSlide = 1;
 
     //создаем переменную, которая содержит ширину нашей картинки
-    const imageSize = sliderImages[0].clientWidth;
-    // задаем стиль transform - traslate, который меняет положение элементов.
-    sliderBox.style.transform = 'translateX('+(-imageSize*countSlide) + 'px)';
+    let imageSizeWidth = sliderImages[0].clientWidth;
+    let imageSizeHeight = sliderImages[0].clientHeight;
+    
+    //*чтобы не вылазила синяя картинка + черные экраны
+    window.addEventListener('resize', function(event){
+
+        
+
+        imageSizeWidth = sliderImages[0].clientWidth;
+        imageSizeHeight = sliderImages[0].clientHeight;
+        let k = imageSizeWidth/1020;
+        if(imageSizeWidth < 1020) {
+            
+            
+            sliderBox.style.transform = 'translateX('+(-sliderImages[0].clientWidth*countSlide) + 'px)';
+        
+            document.getElementById('phone-button_vertical').style.left = (k*200) + 'px';
+            document.getElementById('phone-button_vertical').style.top = (k*460) + 'px';
+            document.getElementById('phone-button_horisontal').style.left = (k*433) + 'px';
+            document.getElementById('phone-button_horisontal').style.top = (k*268) + 'px';
+    
+            document.getElementById('black-screen_vertical').style.left = (k*126) + 'px';
+            document.getElementById('black-screen_vertical').style.top = (k*116) + 'px';
+            document.getElementById('black-screen_vertical').style.width = (k*190) + 'px';
+            document.getElementById('black-screen_vertical').style.height = (k*344) + 'px';
+    
+            document.getElementById('black-screen_horisontal').style.left = (k*485) + 'px';
+            document.getElementById('black-screen_horisontal').style.top = (k*191) + 'px';
+            document.getElementById('black-screen_horisontal').style.width = (k*336) + 'px';
+            document.getElementById('black-screen_horisontal').style.height = (k*198) + 'px';
+
+            document.querySelector('.slider').style.height = (imageSizeHeight*451.76)/442 + 'px';
+
+            document.querySelector('.right-arrow').style.top = (imageSizeHeight*211.88)/437 + 'px';
+            document.querySelector('.left-arrow').style.top = (imageSizeHeight*211.88)/437 + 'px';
+        } else {
+            sliderBox.style.transform = 'translateX('+(-sliderImages[0].clientWidth*countSlide) + 'px)';
+
+            document.getElementById('phone-button_vertical').style.left = '200px';
+            document.getElementById('phone-button_vertical').style.top = '461px';
+            document.getElementById('phone-button_horisontal').style.left = '433px';
+            document.getElementById('phone-button_horisontal').style.top = '268px';
+    
+            document.getElementById('black-screen_vertical').style.left = '126px';
+            document.getElementById('black-screen_vertical').style.top = '116px';
+            document.getElementById('black-screen_vertical').style.width = '188px';
+            document.getElementById('black-screen_vertical').style.height = '336px';
+    
+            document.getElementById('black-screen_horisontal').style.left = '485px';
+            document.getElementById('black-screen_horisontal').style.top = '191px';
+            document.getElementById('black-screen_horisontal').style.width = '333px';
+            document.getElementById('black-screen_horisontal').style.height =  '196px';
+
+            document.querySelector('.slider').style.height = '599.9px';
+        }
+    });
+    // задаем стиль transform - traslate, который меняет положение элементов.   
+    sliderBox.style.transform = 'translateX('+(-imageSizeWidth*countSlide) + 'px)';
 
     arrowRight.addEventListener('click', ()=> {
         if(countSlide >= sliderImages.length -1) return;
         sliderBox.style.transition = 'transform 0.6s ease-in-out';
         countSlide++;
-        sliderBox.style.transform = 'translateX('+(-imageSize*countSlide) + 'px)';
+        sliderBox.style.transform = 'translateX('+(-imageSizeWidth*countSlide) + 'px)';
         //*убираем стили черного экрана
         if (countSlide === 2){
             document.getElementById('black-screen_vertical').style.display = 'none'
@@ -106,7 +183,7 @@ const slider = () => {
         if(countSlide <= 0) return;
         sliderBox.style.transition = 'transform 0.6s ease-in-out';
         countSlide--;
-        sliderBox.style.transform = 'translateX('+(-imageSize*countSlide) + 'px)';
+        sliderBox.style.transform = 'translateX('+(-imageSizeWidth*countSlide) + 'px)';
         //*убираем стили черного экрана
         if (countSlide === 0){
             document.getElementById('black-screen_vertical').style.display = 'none'
@@ -123,12 +200,12 @@ const slider = () => {
         if(sliderImages[countSlide].id === 'last-slide') {
             sliderBox.style.transition = 'none';
             countSlide =  1;
-            sliderBox.style.transform = 'translateX('+(-imageSize*countSlide) + 'px)';
+            sliderBox.style.transform = 'translateX('+(-imageSizeWidth*countSlide) + 'px)';
     }
         if (sliderImages[countSlide].id === 'first-slide') {
             sliderBox.style.transition = 'none';
             countSlide = sliderImages.length - 2;
-            sliderBox.style.transform = 'translateX('+(-imageSize*countSlide) + 'px)';
+            sliderBox.style.transform = 'translateX('+(-imageSizeWidth*countSlide) + 'px)';
         }
     })
 }
@@ -281,5 +358,10 @@ const closeButton = () => {
     }))
 }
 
+const form = document.querySelector('.quote__form');
+window.addEventListener('resize', function(event) {
+    
+    form.style.heigth = form.clientWidth/442*309 +'px';
+})
 
 
